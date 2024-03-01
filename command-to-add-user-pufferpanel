@@ -1,0 +1,1 @@
+sudo pufferpanel user add
