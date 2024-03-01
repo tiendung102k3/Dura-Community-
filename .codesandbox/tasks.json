@@ -1,0 +1,73 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "command": "apt update",
+      "name": "apt update"
+    },
+    {
+      "command": "apt upgrade -y",
+      "name": "apt upgrade -y"
+    },
+    {
+      "command": "apt install sudo -y",
+      "name": "apt install sudo -y"
+    },
+    {
+      "command": "apt install systemctl -y",
+      "name": "apt install systemctl -y"
+    },
+    {
+      "command": "apt install nano -y",
+      "name": "apt install nano -y"
+    },
+    {
+      "command": "curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash",
+      "name": "curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash"
+    },
+    {
+      "command": "curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo os=ubuntu dist=jammy bash",
+      "name": "curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo os=ubuntu dist=jammy bash"
+    },
+    {
+      "command": "sudo apt-get install pufferpanel",
+      "name": "sudo apt-get install pufferpanel"
+    },
+    {
+      "command": "sudo systemctl enable pufferpanel",
+      "name": "sudo systemctl enable pufferpanel"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "start": {
+      "name": "start",
+      "command": "python main.py",
+      "runAtStart": true,
+      "restartOn": {
+        "files": [
+          "main.py"
+        ],
+        "branch": false,
+        "resume": false
+      }
+    },
+    "install-dependencies": {
+      "name": "Installing Dependencies",
+      "command": "pip install -r requirements.txt",
+      "restartOn": {
+        "files": [
+          "requirements.txt"
+        ],
+        "branch": false,
+        "resume": false
+      }
+    },
+    "sudo systemctl enable --now pufferpanel": {
+      "name": "sudo systemctl enable --now pufferpanel",
+      "command": "sudo systemctl enable --now pufferpanel",
+      "runAtStart": true
+    }
+  }
+}
