@@ -1,0 +1,23 @@
+name: VPS miễn phí
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  vps:
+    runs-on: alpine-3.14.5
+
+    steps:
+      - name: Cài đặt Docker
+        uses: actions/setup-docker@v3
+        with:
+          docker-version: 'latest'
+
+      - name: Khởi động VPS
+        run: |
+          docker run -d \
+            -p 80:80 \
+            -v /data:/data \
+            --name vps alpine:3.14.5
+            
